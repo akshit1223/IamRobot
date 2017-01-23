@@ -74,7 +74,11 @@ class motor:
         self.encoderStatus['encoderA']['past'],self.encoderStatus['encoderB']['past'] = self.encoderStatus['encoderA']['present'], self.encoderStatus['encoderB']['present']
 
 
-   
+    def initiateEncoders(self):
+        GPIO.add_event_detect(self.pinSelection['encoderA'], GPIO.BOTH, callback = self.updateEncoderA)
+        GPIO.add_event_detect(self.pinSelection['encoderB'], GPIO.BOTH, callback = self.updateEncoderB)
+
+        
 
     
         
