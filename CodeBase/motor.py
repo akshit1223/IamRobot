@@ -1,5 +1,6 @@
 class motor:
 
+
     def __init__(self):
         # Setting up pin numbers and pwm properties
         
@@ -9,6 +10,7 @@ class motor:
         self.encoderStatus = {'encoderA': {'present': 0, 'past': 0}, 'encoderB': {'present': 0, 'past': 0}, 'missCounts': 0}
         
         
+
     def pinInitialization(self, directionPin, speedPin, encoderPinA, encoderPinB):
         # Initializing Rpi for the motor pins
 
@@ -17,6 +19,8 @@ class motor:
         GPIO.setup(self.pinSelection['speedPin'], GPIO.OUT)
         GPIO.setup(self.pinSelection['encoderPinA'], GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
         GPIO.setup(self.pinSelection['encoderPinB'], GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
+
 
     def pwmInitialization(self, pwmFrequency, motorSpeed, motorDirection):
         # Starting the motor with the desired speed and direction
@@ -30,6 +34,8 @@ class motor:
             GPIO.output(self.pinSelection['directionPin'], GPIO.LOW)
 
         motor.start(self.pwmSelection['motorSpeed'])
+
+
 
     def updateEncoderA(self, channel):
 
@@ -49,6 +55,7 @@ class motor:
         self.encoderStatus['encoderA']['past'], self.encoderStatus['encoderB']['past'] = self.encoderStatus['encoderA']['present'], self.encoderStatus['encoderB']['present']
         
 
+
     def updateEncoderB(self, channel):
 
         self.encoderStatus['encoderA']['present'] = GPIO.input(self.pinSelection['encoderA'])
@@ -67,10 +74,9 @@ class motor:
         self.encoderStatus['encoderA']['past'],self.encoderStatus['encoderB']['past'] = self.encoderStatus['encoderA']['present'], self.encoderStatus['encoderB']['present']
 
 
+   
 
-        
-
-    def retrieveEncoderInfo(self):
+    
         
 
 
