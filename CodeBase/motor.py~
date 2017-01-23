@@ -1,0 +1,17 @@
+class motor:
+    def __init__(self, dirPin, pwmPin, encoderPin1, encoderPin2):
+        self.pinSelection = {'directionPin': dirPin, 'speedPin': pwmPin, 'encoderPinA': encoderPin1, 'encoderPinB': encoderPin2}
+
+    def pinInitialization(self):
+        GPIO.setup(self.pinSelection['directionPin'], GPIO.OUT)
+        GPIO.setup(self.pinSelection['speedPin'], GPIO.OUT)
+        GPIO.setup(self.pinSelection['encoderPinA'], GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+        
+
+        
+
+
+
+
+
+
